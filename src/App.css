@@ -4,14 +4,15 @@
   font-family: 'Arial', sans-serif;
   text-align: center;
   margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+  padding: 20px;
+  background-color: #e9f5f9; /* Light blue background */
 }
 
 /* Todo Counter */
 .TodoCounter {
-  color: #333;
+  color: #2c3e50; /* Dark blue */
   margin: 20px 0;
+  font-size: 20px;
 }
 
 /* Todo Search */
@@ -22,8 +23,9 @@
 .TodoSearch input {
   padding: 10px;
   width: 60%;
-  border: 1px solid #ddd;
+  border: 2px solid #3498db; /* Bright blue border */
   border-radius: 5px;
+  font-size: 16px;
 }
 
 /* Todo List */
@@ -41,16 +43,18 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 80%;
   text-align: left;
+  border-left: 5px solid #3498db; /* Bright blue border on the left */
 }
 
 .TodoItem.completed {
   text-decoration: line-through;
-  color: #999;
+  color: #95a5a6; /* Greyish color for completed items */
+  border-left: 5px solid #95a5a6; /* Greyish border for completed items */
 }
 
 /* Create Todo Button */
 .CreateTodoButton {
-  background-color: #007bff;
+  background-color: #e74c3c; /* Bright red */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -58,8 +62,9 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
 .CreateTodoButton:hover {
-  background-color: #0056b3;
+  background-color: #c0392b; /* Darker red on hover */
 }
