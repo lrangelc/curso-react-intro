@@ -63,8 +63,12 @@
   font-size: 16px;
   margin-top: 20px;
   transition: background-color 0.3s;
+
+  transform: rotate(0);
+  transition: .3s ease;
 }
 
 .CreateTodoButton:hover {
   background-color: #c0392b; /* Darker red on hover */
+  transform: rotate(224deg);
 }
