@@ -1,7 +1,7 @@
 // const styles = {
 //   backgroundColor: 'red',
 // };
-// import './TodoCounter.css';
+import './index.css';
 
 function TodoCounter({ completed, total }) {
   return (
