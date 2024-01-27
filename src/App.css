@@ -1,38 +1,65 @@
+/* App.css */
+
 .App {
+  font-family: 'Arial', sans-serif;
   text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Todo Counter */
+.TodoCounter {
+  color: #333;
+  margin: 20px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Todo Search */
+.TodoSearch {
+  margin: 20px 0;
 }
 
-.App-header {
-  background-color: #233553;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.TodoSearch input {
+  padding: 10px;
+  width: 60%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Todo List */
+.TodoList {
+  list-style: none;
+  padding: 0;
+}
+
+/* Todo Item */
+.TodoItem {
+  background-color: #fff;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  text-align: left;
+}
+
+.TodoItem.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Create Todo Button */
+.CreateTodoButton {
+  background-color: #007bff;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #97ca3f;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.CreateTodoButton:hover {
+  background-color: #0056b3;
 }

@@ -1,6 +1,6 @@
 function TodoItem({ item, index }) {
   return (
-    <li>
+    <li className={item.completed ? 'TodoItem.completed' : 'TodoItem'}>
       <span>{item.completed ? '【✔︎】' : '【 】'}</span>
       <p>
         {index} {item.text}x
