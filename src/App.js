@@ -1,43 +1,34 @@
 import React from 'react';
 import './App.css';
+import { TodoCounter } from './TodoCounter';
+import { TodoSearch } from './TodoSearch';
+import { TodoList } from './TodoList';
+import { TodoItem } from './TodoItem';
+import { CreateTodoButton } from './CreateTodoButton';
 
 function App() {
+  const todos = [
+    { text: 'Todo 1', completed: false },
+    { text: 'Todo 2', completed: true },
+    { text: 'Todo 3', completed: false },
+    { text: 'Todo 4', completed: false },
+    { text: 'Todo 5', completed: false },
+    { text: 'Todo 6', completed: false },
+  ];
+
   return (
     <div className="App">
-      <TodoCounter completed={5} total={10} />
+      <TodoCounter completed={todos.filter((element) => element.completed).length} total={todos.length} />
       <TodoSearch />
-      
-      <TodoCounter2 completed={15} total={30} />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      <TodoList>
+        <TodoItem />
+        <TodoItem />
+        <TodoItem />
+      </TodoList>
+
+      <CreateTodoButton />
     </div>
   );
-}
-
-function TodoSearch() {
-  return (<></>)
-}
-
-function TodoItem() {
-  return (
-    <li>
-      <span>V</span>
-      <p>Llorar con la Llorona</p>
-      <span>X</span>
-    </li>
-  );
-}
-
-function TodoCounter(props) {
-  return (
-    <h1>
-      Completaste {props.completed} de {props.total} TODOs
-    </h1>
-  );
-}
-function TodoCounter2(props) {
-  return React.createElement('h1', null, `Completaste ${props.completed} de ${props.total} TODOs`);
 }
 
 export default App;
