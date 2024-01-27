@@ -1,8 +1,10 @@
-function TodoItem() {
+function TodoItem({ item, index }) {
   return (
     <li>
-      <span>V</span>
-      <p>Llorar con la Llorona</p>
+      <span>{item.completed ? '【✔︎】' : '【 】'}</span>
+      <p>
+        {index} {item.text}x
+      </p>
       <span>X</span>
     </li>
   );

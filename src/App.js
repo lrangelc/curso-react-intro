@@ -1,5 +1,3 @@
-import React from 'react';
-import './App.css';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -7,7 +5,7 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 
 function App() {
-  const todos = [
+  const defaultTodos = [
     { text: 'Todo 1', completed: false },
     { text: 'Todo 2', completed: true },
     { text: 'Todo 3', completed: false },
@@ -17,17 +15,23 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <TodoCounter completed={todos.filter((element) => element.completed).length} total={todos.length} />
+    <>
+      <TodoCounter completed={defaultTodos.filter((element) => element.completed).length} total={defaultTodos.length} />
       <TodoSearch />
       <TodoList>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {/* {defaultTodos.map((todo, index) => {
+          if (!todo.completed) {
+            return <TodoItem key={index} index={index} item={todo} />;
+          }
+          return <></>;
+        })} */}
+        {defaultTodos.map((todo, index) => (
+          <TodoItem key={index} index={index} item={todo} />
+        ))}
       </TodoList>
 
       <CreateTodoButton />
-    </div>
+    </>
   );
 }
 
