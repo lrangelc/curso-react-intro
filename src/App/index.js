@@ -4,20 +4,21 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
+import { v4 as uuidv4 } from 'uuid';
 
 const defaultTodos = [
-  { id: 1, text: 'Todo 1', completed: false },
-  { id: 2, text: 'Todo 2', completed: true },
-  { id: 3, text: 'Todo3', completed: false },
-  { id: 4, text: 'Todo 4', completed: true },
-  { id: 5, text: 'Todo 5', completed: false },
-  { id: 6, text: 'Todo 6', completed: false },
-  { id: 7, text: 'Korn', completed: false },
-  { id: 8, text: 'Pearl Jam', completed: false },
-  { id: 9, text: 'Nirvana', completed: false },
-  { id: 10, text: 'Niño', completed: false },
-  { id: 11, text: 'Papá', completed: false },
-  { id: 12, text: 'Canción', completed: false },
+  { id: uuidv4(), text: 'Todo 1', completed: false },
+  { id: uuidv4(), text: 'Todo 2', completed: true },
+  { id: uuidv4(), text: 'Todo3', completed: false },
+  { id: uuidv4(), text: 'Todo 4', completed: true },
+  { id: uuidv4(), text: 'Todo 5', completed: false },
+  { id: uuidv4(), text: 'Todo 6', completed: false },
+  { id: uuidv4(), text: 'Korn', completed: false },
+  { id: uuidv4(), text: 'Pearl Jam', completed: false },
+  { id: uuidv4(), text: 'Nirvana', completed: false },
+  { id: uuidv4(), text: 'Niño', completed: false },
+  { id: uuidv4(), text: 'Papá', completed: false },
+  { id: uuidv4(), text: 'Canción', completed: false },
 ];
 
 function App() {
@@ -32,14 +33,14 @@ function App() {
 
   const completeTodo = (id) => {
     const newTodos = [...todos];
-    const index = newTodos.findIndex((todo) => todo.id === id)
-    newTodos[index].completed = true;
+    const index = newTodos.findIndex((todo) => todo.id === id);
+    newTodos[index].completed = !newTodos[index].completed;
     setTodos(newTodos);
   };
 
   const deleteTodo = (id) => {
     const newTodos = [...todos];
-    const index = newTodos.findIndex((todo) => todo.id === id)
+    const index = newTodos.findIndex((todo) => todo.id === id);
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
@@ -49,8 +50,8 @@ function App() {
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
-        {searchedTodos.map((todo, index) => (
-          <TodoItem key={index} item={todo} onComplete={completeTodo} onDelete={deleteTodo} />
+        {searchedTodos.map((todo) => (
+          <TodoItem key={todo.id} item={todo} onComplete={completeTodo} onDelete={deleteTodo} />
         ))}
       </TodoList>
 
