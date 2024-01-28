@@ -6,7 +6,7 @@ function TodoItem({ item, index, onComplete, onDelete }) {
       <span
         className={`Icon Icon-check ${item.completed ? 'Icon-check--active' : ''}`}
         onClick={() => {
-          onComplete(index);
+          onComplete(item.id);
         }}
       >
         V
@@ -15,7 +15,7 @@ function TodoItem({ item, index, onComplete, onDelete }) {
       <span
         className="Icon Icon-delete"
         onClick={() => {
-          onDelete(index);
+          onDelete(item.id);
         }}
       >
         X

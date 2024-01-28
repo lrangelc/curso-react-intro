@@ -6,18 +6,18 @@ import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 
 const defaultTodos = [
-  { text: 'Todo 1', completed: false },
-  { text: 'Todo 2', completed: true },
-  { text: 'Todo3', completed: false },
-  { text: 'Todo 4', completed: true },
-  { text: 'Todo 5', completed: false },
-  { text: 'Todo 6', completed: false },
-  { text: 'Korn', completed: false },
-  { text: 'Pearl Jam', completed: false },
-  { text: 'Nirvana', completed: false },
-  { text: 'Niño', completed: false },
-  { text: 'Papá', completed: false },
-  { text: 'Canción', completed: false },
+  { id: 1, text: 'Todo 1', completed: false },
+  { id: 2, text: 'Todo 2', completed: true },
+  { id: 3, text: 'Todo3', completed: false },
+  { id: 4, text: 'Todo 4', completed: true },
+  { id: 5, text: 'Todo 5', completed: false },
+  { id: 6, text: 'Todo 6', completed: false },
+  { id: 7, text: 'Korn', completed: false },
+  { id: 8, text: 'Pearl Jam', completed: false },
+  { id: 9, text: 'Nirvana', completed: false },
+  { id: 10, text: 'Niño', completed: false },
+  { id: 11, text: 'Papá', completed: false },
+  { id: 12, text: 'Canción', completed: false },
 ];
 
 function App() {
@@ -30,14 +30,16 @@ function App() {
   const completedTodos = todos.filter((element) => element.completed).length;
   const totalTodos = todos.length;
 
-  const completeTodo = (index) => {
+  const completeTodo = (id) => {
     const newTodos = [...todos];
+    const index = newTodos.findIndex((todo) => todo.id === id)
     newTodos[index].completed = true;
     setTodos(newTodos);
   };
 
-  const deleteTodo = (index) => {
+  const deleteTodo = (id) => {
     const newTodos = [...todos];
+    const index = newTodos.findIndex((todo) => todo.id === id)
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
@@ -48,7 +50,7 @@ function App() {
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {searchedTodos.map((todo, index) => (
-          <TodoItem key={index} index={index} item={todo} onComplete={completeTodo} onDelete={deleteTodo} />
+          <TodoItem key={index} item={todo} onComplete={completeTodo} onDelete={deleteTodo} />
         ))}
       </TodoList>
 
