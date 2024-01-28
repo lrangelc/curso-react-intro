@@ -4,7 +4,6 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
-// import './index.css';
 
 const defaultTodos = [
   { text: 'Todo 1', completed: false },
@@ -16,6 +15,9 @@ const defaultTodos = [
   { text: 'Korn', completed: false },
   { text: 'Pearl Jam', completed: false },
   { text: 'Nirvana', completed: false },
+  { text: 'Niño', completed: false },
+  { text: 'Papá', completed: false },
+  { text: 'Canción', completed: false },
 ];
 
 function App() {
@@ -25,6 +27,9 @@ function App() {
   const searchedTodos = todos.filter((todo) => {
     return todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase());
   });
+  // const searchedTodos = todos.filter((todo) => {
+  //   return todo.text.toLowerCase().includes(searchValue.toLowerCase());
+  // });
   const completedTodos = todos.filter((element) => element.completed).length;
   const totalTodos = todos.length;
 
