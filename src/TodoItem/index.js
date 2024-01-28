@@ -1,16 +1,25 @@
 import './index.css';
 
-function TodoItem({ item, index }) {
+function TodoItem({ item, index, onComplete, onDelete }) {
   return (
     <li className="TodoItem">
-      <span className={`Icon Icon-check ${item.completed ? 'Icon-check--active' : ''}`}>V</span>
+      <span
+        className={`Icon Icon-check ${item.completed ? 'Icon-check--active' : ''}`}
+        onClick={() => {
+          onComplete(index);
+        }}
+      >
+        V
+      </span>
       <p className={`TodoItem-p ${item.completed ? 'TodoItem-p--complete' : ''}`}>{item.text}</p>
-      {/* <span className="Icon Icon-delete">X</span>
-      <span>{item.completed ? '【✔︎】' : '【 】'}</span>
-      <p>
-        {index} {item.text}x
-      </p>
-      <span>X</span> */}
+      <span
+        className="Icon Icon-delete"
+        onClick={() => {
+          onDelete(index);
+        }}
+      >
+        X
+      </span>
     </li>
   );
 }
