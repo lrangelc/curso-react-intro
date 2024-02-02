@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
@@ -23,7 +23,21 @@ const defaultTodos = [
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState([]);
+
+  useEffect(() => {
+    const localStorageTodos = localStorage.getItem('TODOS_V1');
+    let parsedTodos = defaultTodos;
+    if (localStorageTodos) {
+      parsedTodos = JSON.parse(localStorageTodos);
+    }
+    setTodos(parsedTodos);
+  }, []);
+
+  useEffect(() => {
+    const savedData = [...todos];
+    localStorage.setItem('TODOS_V1', JSON.stringify(savedData));
+  }, [todos]);
 
   const searchedTodos = todos.filter((todo) => {
     return todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase());
