@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
-import { v4 as uuidv4 } from 'uuid';
 
 const defaultTodos = [
   { id: uuidv4(), text: 'Todo 1', completed: false },
@@ -23,21 +24,7 @@ const defaultTodos = [
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
-  const [todos, setTodos] = React.useState([]);
-
-  useEffect(() => {
-    const localStorageTodos = localStorage.getItem('TODOS_V1');
-    let parsedTodos = defaultTodos;
-    if (localStorageTodos) {
-      parsedTodos = JSON.parse(localStorageTodos);
-    }
-    setTodos(parsedTodos);
-  }, []);
-
-  useEffect(() => {
-    const savedData = [...todos];
-    localStorage.setItem('TODOS_V1', JSON.stringify(savedData));
-  }, [todos]);
+  const [todos, setTodos] = useLocalStorage('TODOS_V1', defaultTodos);
 
   const searchedTodos = todos.filter((todo) => {
     return todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase());
