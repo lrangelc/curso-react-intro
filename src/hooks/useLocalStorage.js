@@ -1,16 +1,26 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function useLocalStorage(key, initialValue) {
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
+  const [storedValue, setStoredValue] = useState(initialValue);
+
   // Initialize the state with data from localStorage or the provided initial value
-  const [storedValue, setStoredValue] = useState(() => {
+  React.useEffect(() => {
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
+      const newValue = item ? JSON.parse(item) : initialValue;
+      setTimeout(() => {
+        console.log('Delayed for 1 second.');
+        setStoredValue(newValue);
+        setLoading(false);
+      }, 1000);
+    } catch (err) {
       console.log(error);
-      return initialValue;
+      setLoading(false);
+      setError(true);
     }
-  });
+  }, []);
 
   // Listen for changes in the storedValue and update localStorage accordingly
   useEffect(() => {
@@ -22,7 +32,7 @@ function useLocalStorage(key, initialValue) {
     }
   }, [storedValue, key]);
 
-  return [storedValue, setStoredValue];
+  return { storedValue, setStoredValue, loading, error };
 }
 
 export { useLocalStorage };

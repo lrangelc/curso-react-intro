@@ -20,7 +20,7 @@ const defaultTodos = [
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
-  const [todos, setTodos] = useLocalStorage('TODOS_V1', defaultTodos);
+  const { storedValue: todos, setStoredValue: setTodos, loading, error } = useLocalStorage('TODOS_V1', defaultTodos);
 
   const searchedTodos = todos.filter((todo) => {
     return todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase());
@@ -44,6 +44,8 @@ function App() {
 
   return (
     <AppUI
+      loading={loading}
+      error={error}
       completedTodos={completedTodos}
       totalTodos={totalTodos}
       searchValue={searchValue}
