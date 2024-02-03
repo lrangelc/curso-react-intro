@@ -1,18 +1,23 @@
 import React from 'react';
+import { TodoContext } from '../TodoContext';
 
-function TodoSearch({ searchValue, setSearchValue }) {
+function TodoSearch() {
   return (
-    <div className="TodoSearch">
-      <input
-        placeholder="Cortar cebolla"
-        value={searchValue}
-        onChange={(event) => {
-          setSearchValue((previousValue) => {
-            return (previousValue = event.target.value);
-          });
-        }}
-      />
-    </div>
+    <TodoContext.Consumer>
+      {({ searchValue, setSearchValue }) => (
+        <div className="TodoSearch">
+          <input
+            placeholder="Cortar cebolla"
+            value={searchValue}
+            onChange={(event) => {
+              setSearchValue((previousValue) => {
+                return (previousValue = event.target.value);
+              });
+            }}
+          />
+        </div>
+      )}
+    </TodoContext.Consumer>
   );
 }
 
