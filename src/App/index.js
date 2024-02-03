@@ -1,11 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
-import { TodoList } from '../TodoList';
-import { TodoItem } from '../TodoItem';
-import { CreateTodoButton } from '../CreateTodoButton';
+import { AppUI } from './AppUI';
 
 const defaultTodos = [
   { id: uuidv4(), text: 'Todo 1', completed: false },
@@ -47,17 +43,15 @@ function App() {
   };
 
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TodoList>
-        {searchedTodos.map((todo) => (
-          <TodoItem key={todo.id} item={todo} onComplete={completeTodo} onDelete={deleteTodo} />
-        ))}
-      </TodoList>
-
-      <CreateTodoButton />
-    </>
+    <AppUI
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   );
 }
 
