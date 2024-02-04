@@ -11,7 +11,6 @@ function TodoSearch() {
       className="TodoSearch"
       value={searchValue}
       onChange={(event) => {
-        console.log(event.target.value)
         setSearchValue(event.target.value);
       }}
     />

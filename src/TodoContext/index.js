@@ -44,6 +44,12 @@ function TodoProvider({ children }) {
     setTodos(newTodos);
   };
 
+  const addTodo = (newTodoValue) => {
+    const newTodo = { id: uuidv4(), text: newTodoValue, completed: false };
+    const newTodos = [...todos, newTodo];
+    setTodos(newTodos);
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -58,6 +64,7 @@ function TodoProvider({ children }) {
         deleteTodo,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}
