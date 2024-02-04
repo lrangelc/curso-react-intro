@@ -45,7 +45,7 @@ function TodoProvider({ children }) {
 
   return (
     <TodoContext.Provider
-      value={(loading, error, completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo)}
+      value={{loading, error, completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo}}
     >
       {children}
     </TodoContext.Provider>

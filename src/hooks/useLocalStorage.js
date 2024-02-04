@@ -10,11 +10,11 @@ function useLocalStorage(key, initialValue) {
     try {
       const item = window.localStorage.getItem(key);
       const newValue = item ? JSON.parse(item) : initialValue;
-      setTimeout(() => {
-        console.log('Delayed for 1 second.');
-        setStoredValue(newValue);
-        setLoading(false);
-      }, 1000);
+      // setTimeout(() => {
+      console.log('Delayed for 1 second.');
+      setStoredValue(newValue);
+      setLoading(false);
+      // }, 1000);
     } catch (err) {
       console.log(error);
       setLoading(false);
