@@ -22,6 +22,7 @@ const defaultTodos = [
 function TodoProvider({ children }) {
   const [searchValue, setSearchValue] = React.useState('');
   const { storedValue: todos, setStoredValue: setTodos, loading, error } = useLocalStorage('TODOS_V1', [] || defaultTodos);
+  const [openModal, setOpenModal] = React.useState(false);
 
   const searchedTodos = todos.filter((todo) => {
     return todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase());
@@ -45,7 +46,19 @@ function TodoProvider({ children }) {
 
   return (
     <TodoContext.Provider
-      value={{loading, error, completedTodos, totalTodos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo}}
+      value={{
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal,
+      }}
     >
       {children}
     </TodoContext.Provider>
