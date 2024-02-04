@@ -45,8 +45,9 @@ function TodoProvider({ children }) {
   };
 
   const addTodo = (newTodoValue) => {
+    const newTodos = [...todos];
     const newTodo = { id: uuidv4(), text: newTodoValue, completed: false };
-    const newTodos = [...todos, newTodo];
+    newTodos.push(newTodo);
     setTodos(newTodos);
   };
 
